@@ -1,0 +1,49 @@
+#include <iostream>
+#include <string>
+
+using namespace std;
+
+double calculateGradePoints(string grade) {
+    if (grade == "A+") return 10;
+    else if (grade == "A") return 9;
+    else if (grade == "B+") return 8;
+    else if (grade == "B") return 7;
+    else if (grade == "C+") return 6;
+    else if (grade == "C") return 5;
+    else if (grade == "D") return 4;
+}
+
+int main() {
+    int numSubjects;
+    cout << "Enter the number of subjects: ";
+    cin >> numSubjects;
+    cin.ignore(); 
+
+    double totalGradePoints = 0.0;
+    double totalCredits = 0.0;
+
+    for (int i = 1; i <= numSubjects; i++) {
+        string subjectName;
+        int credits;
+        string grade;
+
+        cout << "Enter the name of subject " << i << ": ";
+        getline(cin, subjectName);
+
+        cout << "Enter credits for subject " << i << ": ";
+        cin >> credits;
+        cin.ignore();
+
+        cout << "Enter grade for subject " << i << ": ";
+        getline(cin, grade);
+
+        double gradePoints = calculateGradePoints(grade);
+        totalGradePoints += gradePoints * credits;
+        totalCredits += credits;
+        
+    }
+
+    double cgpa = totalGradePoints / totalCredits;
+    cout << "CGPA: " << cgpa << endl;
+    return 0;
+}
