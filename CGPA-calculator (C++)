@@ -11,6 +11,8 @@ double calculateGradePoints(string grade) {
     else if (grade == "C+") return 6;
     else if (grade == "C") return 5;
     else if (grade == "D") return 4;
+    else if (grade == "E") return 3;
+    else return 0; //incase invalid grade is entered or any unidentified symbols are entered.1
 }
 
 int main() {
@@ -29,10 +31,16 @@ int main() {
 
         cout << "Enter the name of subject " << i << ": ";
         getline(cin, subjectName);
-
+        
         cout << "Enter credits for subject " << i << ": ";
         cin >> credits;
         cin.ignore();
+  
+        if (credits <= 0 ) {
+            cout << "Invalid credit. Enter again" << endl;
+            i--;
+            continue;
+        } //to handle invalid number of credits
 
         cout << "Enter grade for subject " << i << ": ";
         getline(cin, grade);
